@@ -1,0 +1,39 @@
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <h3>Latin Labs Traders</h3>
+                <p>Portal profesional de trading para traders serios</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{ url_for('calculator.index') }}">Calculadora de Riesgo</a></li>
+                    <li><a href="{{ url_for('news.index') }}">Noticias Financieras</a></li>
+                    <li><a href="{{ url_for('calendar.index') }}">Calendario Económico</a></li>
+                    <li><a href="{{ url_for('social.index') }}">Social Trading</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="{{ url_for('referrals.index') }}">DNA Funded Partner</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Latin Labs Traders. All rights reserved.</p>
+            <p class="footer-credit">
+                Powered by <a href="https://opencode.ai" target="_blank">OpenCode</a> &middot;
+                AI: <strong>Mistral Large 3</strong> via <a href="https://build.nvidia.com" target="_blank">NVIDIA NIM</a> &middot;
+                <a href="{{ url_for('referrals.index') }}">DNA Funded Partner</a>
+            </p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,62 @@
+﻿<script>
+(function() {
+    'use strict';
+
+    document.querySelectorAll('.input-group select').forEach(function(select) {
+        function update() {
+            select.closest('.input-group').classList.toggle('has-value', select.value !== '');
+        }
+        select.addEventListener('change', update);
+        select.addEventListener('focus', function() {
+            select.closest('.input-group').classList.add('has-value');
+        });
+        select.addEventListener('blur', function() {
+            if (select.value === '') {
+                select.closest('.input-group').classList.remove('has-value');
+            }
+        });
+        update();
+    });
+
+    function fmt(n, d) {
+        return n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+    }
+
+    function animate(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        if (isNaN(target)) { el.textContent = el.getAttribute('data-prefix') || '' + '0.00'; return; }
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var decimals = parseInt(el.getAttribute('data-decimals')) || 2;
+        var duration = 900;
+        var start = performance.now();
+
+        function update(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = eased * target;
+            el.textContent = prefix + fmt(current, decimals) + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animate(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.countup').forEach(function(el) {
+        observer.observe(el);
+    });
+})();
+</script>
+
+</body>
+</html>
+

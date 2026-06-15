@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Social Media Agent - Latin Labs Traders{% endblock %}
+
+{% block content %}
+<div class="module-container social-module">
+    <div class="module-header">
+        <h1>
+            <i class="fas fa-users"></i>
+            <span data-i18n="social_title">Social Media Agent</span>
+        </h1>
+        <p class="module-description" data-i18n="social_description">
+            Track influential traders, world leaders, and analysts — with AI-powered relevance analysis
+        </p>
+    </div>
+
+    <div class="social-controls">
+        <div class="filter-group">
+            <label for="traderFilter" data-i18n="trader">Account</label>
+            <select id="traderFilter">
+                <option value="all" data-i18n="all_traders">All Accounts</option>
+                <optgroup label="World Leaders">
+                    <option value="realDonaldTrump">@realDonaldTrump</option>
+                    <option value="POTUS">@POTUS</option>
+                    <option value="CasaPresidencial">@CasaPresidencial</option>
+                </optgroup>
+                <optgroup label="Finance & Economics">
+                    <option value="elonmusk">@elonmusk</option>
+                    <option value="RayDalio">@RayDalio</option>
+                    <option value="APompliano">@APompliano</option>
+                    <option value="carlquintanilla">@carlquintanilla</option>
+                    <option value="LizAnnSonders">@LizAnnSonders</option>
+                    <option value="KathyLien">@KathyLien</option>
+                    <option value="Michele_Calabro1">@Michele_Calabro1</option>
+                </optgroup>
+                <optgroup label="Trading & Technical Analysis">
+                    <option value="PeterLBrandt">@PeterLBrandt</option>
+                    <option value="Trader_XO">@Trader_XO</option>
+                    <option value="FX_Alchemist">@FX_Alchemist</option>
+                    <option value="derek_freedom">@derek_freedom</option>
+                </optgroup>
+                <optgroup label="Macro & Research">
+                    <option value="MacroCharts">@MacroCharts</option>
+                    <option value="biancoresearch">@biancoresearch</option>
+                    <option value="ProfChuang">@ProfChuang</option>
+                </optgroup>
+                <optgroup label="Crypto">
+                    <option value="CryptoCred">@CryptoCred</option>
+                    <option value="DaanCrypto">@DaanCrypto</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <button id="fetchTweetsBtn" class="btn btn-primary">
+            <i class="fas fa-sync-alt"></i>
+            <span data-i18n="fetch_tweets">Fetch Latest Tweets</span>
+        </button>
+
+        <button id="analyzeTrendsBtn" class="btn btn-secondary" style="display:none;">
+            <i class="fas fa-chart-line"></i>
+            <span data-i18n="analyze_trends">Analyze Market Relevance</span>
+        </button>
+    </div>
+
+    <div id="socialLoading" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p data-i18n="fetching_tweets">Fetching tweets from Nitter...</p>
+    </div>
+
+    <div id="trendsPanel" class="trends-panel" style="display: none;">
+        <div class="trends-header">
+            <i class="fas fa-chart-line"></i>
+            <span data-i18n="trends_analysis_title">Market Relevance Analysis</span>
+        </div>
+        <div id="trendsContent"></div>
+    </div>
+
+    <div id="tweetsFeed" class="tweets-feed">
+        <!-- Tweets will be inserted here -->
+    </div>
+
+    <div id="noTweets" class="empty-state" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <p data-i18n="no_tweets">No tweets available. Click "Fetch Latest Tweets" to get updates.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('social.static', filename='css/social.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('social.static', filename='js/social.js') }}"></script>
+{% endblock %}

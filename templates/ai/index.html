@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}AI Trading Assistant - Latin Labs Traders{% endblock %}
+
+{% block content %}
+<div class="module-container ai-module">
+    <div class="module-header">
+        <h1>
+            <i class="fas fa-robot"></i>
+            <span data-i18n="ai_title">AI Trading Assistant</span>
+        </h1>
+        <p class="module-description" data-i18n="ai_description">
+            Ask questions about risk management, prop firm challenges, and trading strategies
+        </p>
+    </div>
+
+    <div class="chat-container">
+        <div id="chatMessages" class="chat-messages">
+            <div id="chatGreeting" class="chat-greeting">
+                <i class="fas fa-robot"></i>
+                <h3 data-i18n="ai_greeting_title">How can I help you?</h3>
+                <p data-i18n="ai_greeting_text">Ask me about position sizing, challenge rules, drawdown management, or any trading question.</p>
+                <div class="chat-actions">
+                    <button class="btn-sm chat-action-btn" data-prompt="¿Cómo calculo el tamaño de posición ideal?">
+                        <i class="fas fa-calculator"></i> Position Sizing
+                    </button>
+                    <button class="btn-sm chat-action-btn" data-prompt="Explica las reglas del challenge 2 Phase de DNA Funded">
+                        <i class="fas fa-trophy"></i> 2 Phase Rules
+                    </button>
+                    <button class="btn-sm chat-action-btn" data-prompt="¿Qué es un buen ratio Risk/Reward?">
+                        <i class="fas fa-balance-scale"></i> Risk/Reward
+                    </button>
+                    <button class="btn-sm chat-action-btn" data-prompt="¿Cómo gestionar el drawdown diario?">
+                        <i class="fas fa-chart-line"></i> Drawdown Mgmt
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <form id="chatForm" class="chat-input-area" autocomplete="off">
+            <input type="text" id="chatInput" placeholder="Escribe tu pregunta aquí..." data-i18n="ai_input_placeholder" autofocus>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i>
+                <span data-i18n="ai_send">Send</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="ai-disclaimer" data-i18n-area="ai_disclaimer">
+        <div class="ai-disclaimer-icon">🤖</div>
+        <div class="ai-disclaimer-text">
+            <strong data-i18n="ai_disclaimer_model">Mistral Large 3 via NVIDIA NIM</strong>
+            <span data-i18n="ai_disclaimer_text">
+                — Modelo de IA en prueba/evaluación. Este agente puede generar respuestas incorrectas o imprecisas.
+                Verifique siempre la información antes de operar. No confíe exclusivamente en la IA para decisiones financieras.
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('ai.static', filename='css/ai.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('ai.static', filename='js/ai.js') }}"></script>
+{% endblock %}

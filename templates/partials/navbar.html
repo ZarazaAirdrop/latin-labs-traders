@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="/" class="navbar-brand">
+            <span class="brand-text">Latin Labs</span>
+            <span class="brand-subtext">Traders</span>
+        </a>
+        
+        <ul class="navbar-menu">
+    <li><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}" data-i18n="Inicio">Inicio</a></li>
+    <li><a href="/calculator/" class="nav-link {% if request.path.startswith('/calculator') %}active{% endif %}" data-i18n="Calculator">Calculadora</a></li>
+    <li><a href="/news/" class="nav-link {% if request.path.startswith('/news') %}active{% endif %}" data-i18n="News">Noticias</a></li>
+    <li><a href="/calendar/" class="nav-link {% if request.path.startswith('/calendar') %}active{% endif %}" data-i18n="Calendar">Calendario</a></li>
+    <li><a href="/social/" class="nav-link {% if request.path.startswith('/social') %}active{% endif %}" data-i18n="Social">Social</a></li>
+    <li><a href="/ai/" class="nav-link {% if request.path.startswith('/ai') %}active{% endif %}" data-i18n="AI_Assistant">AI</a></li>
+    <li><a href="/referral/" class="nav-link {% if request.path.startswith('/referral') %}active{% endif %}" data-i18n="Referrals">Referidos</a></li>
+</ul>
+        
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="es">ES</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="pt">PT</button>
+        </div>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>

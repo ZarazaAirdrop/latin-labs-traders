@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Economic Calendar - Latin Labs Traders{% endblock %}
+
+{% block content %}
+<div class="module-container calendar-module">
+    <div class="module-header">
+        <h1>
+            <i class="fas fa-calendar-alt"></i>
+            <span data-i18n="calendar_title">Economic Calendar</span>
+        </h1>
+        <p class="module-description" data-i18n="calendar_description">
+            Real-time economic events and market-moving announcements
+        </p>
+    </div>
+
+    <div class="calendar-filters">
+        <div class="filter-group">
+            <label for="impactFilter" data-i18n="impact">Impact</label>
+            <select id="impactFilter">
+                <option value="all" data-i18n="all_impact">All Impact</option>
+                <option value="high" data-i18n="high_impact">High</option>
+                <option value="medium" data-i18n="medium_impact">Medium</option>
+                <option value="low" data-i18n="low_impact">Low</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="currencyFilter" data-i18n="currency">Currency</label>
+            <select id="currencyFilter">
+                <option value="all" data-i18n="all_currencies">All Currencies</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="CHF">CHF</option>
+                <option value="AUD">AUD</option>
+                <option value="CAD">CAD</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="dateFilter" data-i18n="date">Date</label>
+            <input type="date" id="dateFilter" class="date-input">
+        </div>
+
+        <button id="refreshCalendar" class="btn btn-primary">
+            <i class="fas fa-sync-alt"></i>
+            <span data-i18n="refresh">Refresh</span>
+        </button>
+    </div>
+
+    <div id="calendarLoading" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p data-i18n="loading_calendar">Loading economic calendar...</p>
+    </div>
+
+    <div id="calendarEvents" class="calendar-events">
+        <!-- Events will be inserted here -->
+    </div>
+
+    <div id="noEvents" class="empty-state" style="display: none;">
+        <i class="fas fa-calendar-times"></i>
+        <p data-i18n="no_events">No events found for the selected filters.</p>
+    </div>
+</div>
+
+<!-- Event Detail Modal -->
+<div id="eventModal" class="modal">
+    <div class="modal-content event-modal-content">
+        <button id="closeEventModal" class="modal-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div id="eventModalBody">
+            <!-- Event detail + AI analysis rendered here -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('calendar.static', filename='css/calendar.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('calendar.static', filename='js/calendar.js') }}"></script>
+{% endblock %}

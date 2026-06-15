@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Labs Traders - Portal de Trading Profesional</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Google Analytics -->
+    {% if GA_ID != 'YOUR_GA_ID' %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ GA_ID }}');
+    </script>
+    {% endif %}
+    
+    <!-- Facebook Pixel -->
+    {% if FB_PIXEL_ID != 'YOUR_FB_PIXEL_ID' %}
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{{ FB_PIXEL_ID }}');
+    fbq('track', 'PageView');
+    </script>
+    {% endif %}
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'partials/navbar.html' %}
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-orbs">
+                <div class="hero-orb"></div>
+                <div class="hero-orb"></div>
+                <div class="hero-orb"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-line">Latin Labs</span>
+                <span class="hero-title-line highlight">Traders</span>
+            </h1>
+            
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
+                Aprende a pensar como una prop firm — gestión de riesgo, disciplina y consistencia
+            </p>
+            
+            <p class="hero-subtitle-alt" data-i18n="hero_subtitle_alt">
+                Sin señales, sin predicciones, sin gurús. Herramientas educativas para traders que buscan consistencia.
+            </p>
+            
+            <!-- KPI Grid -->
+            <div class="hero-kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">📊</div>
+                    <div class="kpi-value">44+</div>
+                    <div class="kpi-label">Instrumentos</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🌐</div>
+                    <div class="kpi-value">3</div>
+                    <div class="kpi-label">Idiomas</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">⚡</div>
+                    <div class="kpi-value">Real-time</div>
+                    <div class="kpi-label">Noticias</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">📅</div>
+                    <div class="kpi-value">24/7</div>
+                    <div class="kpi-label">Calendario</div>
+                </div>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="hero-cta">
+                <a href="{{ url_for('calculator.index') }}" class="btn btn-primary btn-lg">
+                    Calculadora de Riesgo
+                </a>
+                <a href="{{ url_for('news.index') }}" class="btn btn-secondary btn-lg">
+                    Noticias Financieras
+                </a>
+            </div>
+            
+            <!-- Tech Progress Bar -->
+            <div class="tech-progress-container">
+                <div class="tech-progress-label">
+                    <span>Powered by Latin Labs AI</span>
+                    <span class="tech-status">● All Systems Operational</span>
+                </div>
+                <div class="tech-progress-bar">
+                    <div class="tech-progress-fill"></div>
+                    <div class="tech-progress-scan"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title" data-i18n="section_tools">Herramientas Profesionales</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3 data-i18n="feature_calc_title">Calculadora de Riesgo</h3>
+                    <p data-i18n="feature_calc_desc">Aprende a dimensionar tus operaciones: position sizing, drawdown y max loss para 44 instrumentos. Piensa como una prop firm.</p>
+                    <a href="{{ url_for('calculator.index') }}" class="feature-link">
+                        <span data-i18n="use_now">Usar ahora</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📰</div>
+                    <h3 data-i18n="feature_news_title">Noticias Financieras</h3>
+                    <p data-i18n="feature_news_desc">Mantente informado para tomar decisiones conscientes. Noticias curadas para educación, no para trading emocional.</p>
+                    <a href="{{ url_for('news.index') }}" class="feature-link">
+                        <span data-i18n="view_news">Ver noticias</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3 data-i18n="feature_cal_title">Calendario Económico</h3>
+                    <p data-i18n="feature_cal_desc">Anticipa la volatilidad con datos económicos reales. Planifica tu trading alrededor de eventos que mueven mercados.</p>
+                    <a href="{{ url_for('calendar.index') }}" class="feature-link">
+                        <span data-i18n="view_calendar">Ver calendario</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🐦</div>
+                    <h3 data-i18n="feature_social_title">Social Trading</h3>
+                    <p data-i18n="feature_social_desc">Sigue a traders que enseñan consistencia, no a vendedores de humo. Aprende de los que piensan como prop firms.</p>
+                    <a href="{{ url_for('social.index') }}" class="feature-link">
+                        <span data-i18n="view_tweets">Ver tweets</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 data-i18n="feature_ai_title">AI Trading Assistant</h3>
+                    <p data-i18n="feature_ai_desc">Asistente educativo con Mistral Large 3: resuelve dudas sobre gestión de riesgo, reglas de prop firms y position sizing.</p>
+                    <a href="{{ url_for('ai.index') }}" class="feature-link">
+                        <span data-i18n="ask_ai">Preguntar</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Manifesto Section -->
+    <section class="manifesto">
+        <div class="container">
+            <div class="manifesto-content">
+                <h2 class="section-title manifesto-title" data-i18n="manifesto_title">¿Qué es Latin Labs Traders?</h2>
+                <div class="manifesto-grid">
+                    <div class="manifesto-card">
+                        <div class="manifesto-icon">🎯</div>
+                        <h3 data-i18n="manifesto_01_title">Enseñamos gestión de riesgo</h3>
+                        <p data-i18n="manifesto_01_text">No señales, no predicciones. Calcula tu posición, entiende tu drawdown, respeta tu max loss. Eso es pensar como una prop firm.</p>
+                    </div>
+                    <div class="manifesto-card">
+                        <div class="manifesto-icon">📖</div>
+                        <h3 data-i18n="manifesto_02_title">Educación cinematográfica</h3>
+                        <p data-i18n="manifesto_02_text">Contamos historias que enseñan disciplina financiera. No gráficos aburridos — narrativa que se queda en tu memoria.</p>
+                    </div>
+                    <div class="manifesto-card">
+                        <div class="manifesto-icon">🛠️</div>
+                        <h3 data-i18n="manifesto_03_title">Herramientas reales</h3>
+                        <p data-i18n="manifesto_03_text">Calculadora de riesgo con 44 instrumentos, asistente IA para reglas de challenges, calendario económico. Todo lo que necesitas para operar con consistencia.</p>
+                    </div>
+                    <div class="manifesto-card">
+                        <div class="manifesto-icon">🔥</div>
+                        <h3 data-i18n="manifesto_04_title">Sin falsas promesas</h3>
+                        <p data-i18n="manifesto_04_text">Aquí no hay Lamborghinis, ni estrategias mágicas, ni gurús. Hay disciplina, gestión de riesgo y trabajo consistente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Channel Banner -->
+    {% include 'partials/channel_banner.html' %}
+    
+    <!-- Legal Disclaimer -->
+    {% include 'partials/disclaimer.html' %}
+    
+    <!-- DNA Funded Banner -->
+    {% include 'partials/dna_banner.html' %}
+    
+    <!-- Footer -->
+    {% include 'partials/footer.html' %}
+    
+    <!-- Main JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

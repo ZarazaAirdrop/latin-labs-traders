@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Financial News Agent - Latin Labs Traders{% endblock %}
+
+{% block content %}
+<div class="module-container news-module">
+    <div class="module-header">
+        <h1>
+            <i class="fas fa-newspaper"></i>
+            <span data-i18n="news_title">Financial News Agent</span>
+        </h1>
+        <p class="module-description" data-i18n="news_description">
+            AI-powered news analysis from Bloomberg, Reuters, and Investing.com
+        </p>
+    </div>
+
+    <div class="news-controls">
+        <div class="filter-group">
+            <label for="newsCategory" data-i18n="news_category">Category</label>
+            <select id="newsCategory">
+                <option value="all" data-i18n="all">All</option>
+                <option value="forex" data-i18n="forex">Forex</option>
+                <option value="crypto" data-i18n="crypto">Crypto</option>
+                <option value="commodities" data-i18n="commodities">Commodities</option>
+                <option value="stocks" data-i18n="stocks">Stocks</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="newsSource" data-i18n="news_source">Source</label>
+            <select id="newsSource">
+                <option value="all" data-i18n="all_sources">All Sources</option>
+                <option value="bloomberg" data-i18n="bloomberg">Bloomberg</option>
+                <option value="reuters" data-i18n="reuters">Reuters</option>
+                <option value="investing" data-i18n="investing">Investing.com</option>
+            </select>
+        </div>
+
+        <button id="fetchNewsBtn" class="btn btn-primary">
+            <i class="fas fa-sync-alt"></i>
+            <span data-i18n="fetch_news">Fetch Latest News</span>
+        </button>
+    </div>
+
+    <div id="newsLoading" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p data-i18n="fetching_news">Fetching news from multiple sources...</p>
+    </div>
+
+    <div id="newsFeed" class="news-feed">
+        <!-- News articles will be inserted here -->
+    </div>
+
+    <div id="noNews" class="empty-state" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <p data-i18n="no_news">No news available. Click "Fetch Latest News" to get updates.</p>
+    </div>
+</div>
+
+<!-- News Detail Modal -->
+<div id="newsModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('news.static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('news.static', filename='js/news.js') }}"></script>
+{% endblock %}
