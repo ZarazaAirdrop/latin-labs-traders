@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Contacto - Latin Labs Traders{% endblock %}
+{% block content %}
+<section class="legal-section">
+    <div class="legal-container">
+        <h1>Contacto</h1>
+        <p class="legal-date">Estamos aquí para ayudarte</p>
+
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:latinlabstraders@gmail.com">latinlabstraders@gmail.com</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-globe"></i>
+                <h3>YouTube</h3>
+                <p><a href="https://youtube.com/@zarazairdrops" target="_blank">Zaraza Airdrops</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Soporte DNA Funded</h3>
+                <p>Para consultas sobre challenges, contacta a <a href="{{ url_for('referrals.index') }}">nuestro partner</a>.</p>
+            </div>
+        </div>
+
+        <div class="contact-note">
+            <p><strong>Nota:</strong> Respondemos en un plazo de 24-48 horas hábiles. Para consultas urgentes sobre trading, te recomendamos contactar directamente a tu bróker o al soporte de DNA Funded.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

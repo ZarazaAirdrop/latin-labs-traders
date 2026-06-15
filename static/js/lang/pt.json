@@ -151,5 +151,9 @@
     "disclaimer_ai_title": "🤖 Assistente de IA - Mistral Large 3",
     "disclaimer_ai_text": "O assistente de IA usa o modelo Mistral Large 3 através da API NVIDIA NIM em modo teste/avaliação (free tier). Este agente pode gerar respostas incorretas ou imprecisas. Verifique sempre as informações fornecidas antes de tomar decisões de trading. Não confie exclusivamente nas respostas geradas por IA para operações financeiras.",
     "ai_disclaimer_model": "Mistral Large 3 via NVIDIA NIM",
-    "ai_disclaimer_text": "— Modelo de IA em teste/avaliação. Este agente pode gerar respostas incorretas ou imprecisas. Verifique sempre as informações antes de operar. Não confie exclusivamente na IA para decisões financeiras."
+    "ai_disclaimer_text": "— Modelo de IA em teste/avaliação. Este agente pode gerar respostas incorretas ou imprecisas. Verifique sempre as informações antes de operar. Não confie exclusivamente na IA para decisões financeiras.",
+    "nav_terms": "Termos",
+    "nav_privacy": "Privacidade",
+    "nav_contact": "Contato",
+    "legal_disclaimer": "Aviso Legal"
 }
