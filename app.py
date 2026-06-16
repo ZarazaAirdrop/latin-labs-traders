@@ -51,7 +51,7 @@ def privacy():
 def contact():
     return render_template('contact.html')
 
-@app.route('/donations')
+@app.route('/donations', strict_slashes=False)
 def donations():
     return render_template('donations.html')
 
