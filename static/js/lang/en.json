@@ -155,5 +155,16 @@
     "nav_terms": "Terms",
     "nav_privacy": "Privacy",
     "nav_contact": "Contact",
-    "legal_disclaimer": "Legal Disclaimer"
+    "legal_disclaimer": "Legal Disclaimer",
+    "Donations": "Donate",
+    "donations_title": "Support the Project",
+    "donations_text": "Your contribution helps us maintain servers, APIs, and continue developing free educational tools for the Latin American trading community. Thank you for being part of Latin Labs Traders.",
+    "donations_note": "All addresses belong to the same wallet. Choose the network with the lowest fee.",
+    "donation_recommended": "Recommended",
+    "donation_fee_low": "Estimated fee: ~$0.03",
+    "donation_fee_medium": "Estimated fee: ~$0.05",
+    "donation_fee_high": "Estimated fee: ~$1-5",
+    "donations_thanks": "Thank you for your support. Every contribution, big or small, motivates us to keep creating quality educational content for the Latin American trading community.",
+    "donation_copy": "Copy address",
+    "donation_copied": "Copied"
 }

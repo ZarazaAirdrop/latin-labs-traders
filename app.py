@@ -51,6 +51,10 @@ def privacy():
 def contact():
     return render_template('contact.html')
 
+@app.route('/donations')
+def donations():
+    return render_template('donations.html')
+
 if __name__ == '__main__':
     debug_mode = os.environ.get('FLASK_DEBUG', '0') == '1'
     app.run(debug=debug_mode, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

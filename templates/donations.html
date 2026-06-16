@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Donaciones - Latin Labs Traders{% endblock %}
+{% block content %}
+<section class="donations-section">
+    <div class="donations-container">
+        <div class="donations-header">
+            <i class="fas fa-heart"></i>
+            <h1 data-i18n="donations_title">Apoya el Proyecto</h1>
+            <p data-i18n="donations_text">Tu contribución nos ayuda a mantener los servidores, APIs y seguir desarrollando herramientas educativas gratuitas para la comunidad de traders latinoamericanos. Gracias por ser parte de Latin Labs Traders.</p>
+        </div>
+
+        <div class="donations-note">
+            <i class="fas fa-info-circle"></i>
+            <span data-i18n="donations_note">Todas las direcciones pertenecen a la misma wallet. Elegí la red con menor fee.</span>
+        </div>
+
+        <div class="donations-grid">
+            <div class="donation-card" data-network="bsc">
+                <div class="donation-card-header">
+                    <i class="fas fa-bolt"></i>
+                    <h2>BNB Smart Chain</h2>
+                    <span class="donation-badge" data-i18n="donation_recommended">Recomendada</span>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Red:</span>
+                    <span class="donation-value">BEP-20</span>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Token:</span>
+                    <span class="donation-value">BNB, USDT, USDC</span>
+                </div>
+                <div class="wallet-address">
+                    <span class="wallet-text">0xaCb55c591f28eeD8e301c17B48472B8936A63bc3</span>
+                    <button class="copy-btn" onclick="copyAddress(this)" title="Copiar dirección">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <span class="donation-fee" data-i18n="donation_fee_low">Fee estimado: ~$0.03</span>
+            </div>
+
+            <div class="donation-card" data-network="polygon">
+                <div class="donation-card-header">
+                    <i class="fas fa-hexagon"></i>
+                    <h2>Polygon</h2>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Red:</span>
+                    <span class="donation-value">Polygon PoS</span>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Token:</span>
+                    <span class="donation-value">MATIC, USDT, USDC</span>
+                </div>
+                <div class="wallet-address">
+                    <span class="wallet-text">0xaCb55c591f28eeD8e301c17B48472B8936A63bc3</span>
+                    <button class="copy-btn" onclick="copyAddress(this)" title="Copiar dirección">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <span class="donation-fee" data-i18n="donation_fee_low">Fee estimado: ~$0.01</span>
+            </div>
+
+            <div class="donation-card" data-network="arbitrum">
+                <div class="donation-card-header">
+                    <i class="fas fa-circle"></i>
+                    <h2>Arbitrum</h2>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Red:</span>
+                    <span class="donation-value">Arbitrum One</span>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Token:</span>
+                    <span class="donation-value">ETH, USDT, USDC</span>
+                </div>
+                <div class="wallet-address">
+                    <span class="wallet-text">0xaCb55c591f28eeD8e301c17B48472B8936A63bc3</span>
+                    <button class="copy-btn" onclick="copyAddress(this)" title="Copiar dirección">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <span class="donation-fee" data-i18n="donation_fee_medium">Fee estimado: ~$0.05</span>
+            </div>
+
+            <div class="donation-card" data-network="ethereum">
+                <div class="donation-card-header">
+                    <i class="fab fa-ethereum"></i>
+                    <h2>Ethereum</h2>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Red:</span>
+                    <span class="donation-value">ERC-20</span>
+                </div>
+                <div class="donation-detail">
+                    <span class="donation-label">Token:</span>
+                    <span class="donation-value">ETH, USDT, USDC</span>
+                </div>
+                <div class="wallet-address">
+                    <span class="wallet-text">0xaCb55c591f28eeD8e301c17B48472B8936A63bc3</span>
+                    <button class="copy-btn" onclick="copyAddress(this)" title="Copiar dirección">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <span class="donation-fee" data-i18n="donation_fee_high">Fee estimado: ~$1-5</span>
+            </div>
+        </div>
+
+        <div class="donations-thanks">
+            <i class="fas fa-hand-holding-heart"></i>
+            <p data-i18n="donations_thanks">Gracias por tu apoyo. Cada contribución, grande o pequeña, nos motiva a seguir creando contenido educativo de calidad para la comunidad de traders en Latinoamérica.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+function copyAddress(btn) {
+    const walletText = btn.parentElement.querySelector('.wallet-text');
+    const address = walletText.textContent.trim();
+    navigator.clipboard.writeText(address).then(() => {
+        const icon = btn.querySelector('i');
+        icon.className = 'fas fa-check';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            icon.className = 'fas fa-copy';
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+</script>
+{% endblock %}
