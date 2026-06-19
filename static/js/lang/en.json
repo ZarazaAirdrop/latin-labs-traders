@@ -166,5 +166,12 @@
     "donation_fee_high": "Estimated fee: ~$1-5",
     "donations_thanks": "Thank you for your support. Every contribution, big or small, motivates us to keep creating quality educational content for the Latin American trading community.",
     "donation_copy": "Copy address",
-    "donation_copied": "Copied"
-}
+    "donation_copied": "Copied",
+    "footer_title": "Latin Labs Traders",
+    "footer_tagline": "Professional trading portal for serious traders",
+    "quick_links": "Quick Links",
+    "calculator_link": "Risk Calculator",
+    "news_link": "Financial News",
+    "calendar_link": "Economic Calendar",
+    "social_link": "Social Trading"
+  }

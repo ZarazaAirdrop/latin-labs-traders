@@ -173,10 +173,16 @@
     "Fase": "Fase",
     "completado": "completado",
     "del drawdown usado": "do drawdown usado",
-    "legal_disclaimer": "Aviso Legal",
     "Link": "Link",
     "calculator_title": "Calculadora de Risco",
     "share_calculation": "Compartilhar Cálculo",
     "Risk_Management": "Gestão de Risco",
-    "Challenge_Progress": "Progresso do Challenge"
+    "Challenge_Progress": "Progresso do Challenge",
+    "footer_title": "Latin Labs Traders",
+    "footer_tagline": "Portal profissional de trading para traders sérios",
+    "quick_links": "Links Rápidos",
+    "calculator_link": "Calculadora de Risco",
+    "news_link": "Notícias Financeiras",
+    "calendar_link": "Calendário Econômico",
+    "social_link": "Social Trading"
   }

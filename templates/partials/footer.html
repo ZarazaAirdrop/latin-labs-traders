@@ -2,8 +2,8 @@
     <div class="footer-container">
         <div class="footer-main">
             <div class="footer-brand">
-                <h3>Latin Labs Traders</h3>
-                <p>Portal profesional de trading para traders serios</p>
+        <h3 data-i18n="footer_title">Latin Labs Traders</h3>
+        <p data-i18n="footer_tagline">Portal profesional de trading para traders serios</p>
                 <div class="footer-social">
                     <a href="https://youtube.com/@latinlabstraders" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="YouTube">
                         <i class="fab fa-youtube"></i>
@@ -18,13 +18,13 @@
             </div>
             
             <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="{{ url_for('calculator.index') }}">Calculadora de Riesgo</a></li>
-                    <li><a href="{{ url_for('news.index') }}">Noticias Financieras</a></li>
-                    <li><a href="{{ url_for('calendar.index') }}">Calendario Económico</a></li>
-                    <li><a href="{{ url_for('social.index') }}">Social Trading</a></li>
-                </ul>
+            <h4 data-i18n="quick_links">Quick Links</h4>
+            <ul>
+                <li><a href="{{ url_for('calculator.index') }}" data-i18n="calculator_link">Calculadora de Riesgo</a></li>
+                <li><a href="{{ url_for('news.index') }}" data-i18n="news_link">Noticias Financieras</a></li>
+                <li><a href="{{ url_for('calendar.index') }}" data-i18n="calendar_link">Calendario Económico</a></li>
+                <li><a href="{{ url_for('social.index') }}" data-i18n="social_link">Social Trading</a></li>
+            </ul>
             </div>
             
             <div class="footer-links">
