@@ -52,7 +52,7 @@ const LanguageManager = {
     
     async loadTranslations() {
         try {
-            const response = await fetch(`/static/js/lang/${this.currentLang}.json`);
+            const response = await fetch(`../../static/js/lang/${this.currentLang}.json`);
             const translations = await response.json();
             this.applyTranslations(translations);
             window.translations[this.currentLang] = translations;
