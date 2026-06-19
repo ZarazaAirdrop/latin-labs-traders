@@ -224,7 +224,7 @@ const Calculator = {
             targetUSD + Math.abs(profitActual);
         
         // Calculate payout estimate (80% split)
-        const payoutEstimate = cuenta * 0.8;
+        const payoutEstimate = cuenta * 0.9;  // Alineado con DNA Funded (90% profit split)
         
         // Determine trader profile
         let profile = 'Conservador';
@@ -387,11 +387,11 @@ const Calculator = {
         if (d.profitActual >= 0) {
             // Positive balance - show remaining drawdown in green
             const remainingDD = d.maxLossPct - d.drawdownPct;
-            drawdownEl.textContent = remainingDD.toFixed(2) + '% disponible';
+            drawdownEl.textContent = remainingDD.toFixed(2) + '% ' + LanguageManager.t('disponible');
             drawdownEl.className = 'detail-value green';
         } else {
             // Negative balance - show used drawdown in red
-            drawdownEl.textContent = d.drawdownPct.toFixed(2) + '% usado';
+            drawdownEl.textContent = d.drawdownPct.toFixed(2) + '% ' + LanguageManager.t('usado');
             drawdownEl.className = 'detail-value red';
         }
         
@@ -408,13 +408,13 @@ const Calculator = {
             const progressPct = d.targetUSD > 0 ? Math.min((d.profitActual / d.targetUSD) * 100, 100) : 0;
             progressEl.style.width = progressPct + '%';
             progressEl.className = 'tech-progress-fill green';
-            progressTextEl.textContent = progressPct.toFixed(1) + '% completado';
+            progressTextEl.textContent = progressPct.toFixed(1) + '% ' + LanguageManager.t('completado');
         } else {
             // Negative balance - show drawdown used
             const ddUsedPct = d.maxLossPct > 0 ? Math.min((d.drawdownPct / d.maxLossPct) * 100, 100) : 0;
             progressEl.style.width = ddUsedPct + '%';
             progressEl.className = 'tech-progress-fill red';
-            progressTextEl.textContent = ddUsedPct.toFixed(1) + '% del drawdown usado';
+            progressTextEl.textContent = ddUsedPct.toFixed(1) + '% ' + LanguageManager.t('del drawdown usado');
         }
         
         document.getElementById('detailPnL').textContent = this.formatCurrency(d.profitActual);
@@ -451,7 +451,7 @@ const Calculator = {
         document.getElementById('detailPipsTP').textContent = d.pipsTP.toFixed(2);
         document.getElementById('detailValueSL').textContent = this.formatCurrency(d.valorSL);
         document.getElementById('detailValueTP').textContent = this.formatCurrency(d.valorTP);
-        document.getElementById('detailPhase').textContent = 'Fase ' + d.fase;
+        document.getElementById('detailPhase').textContent = LanguageManager.t('Fase') + ' ' + d.fase;
         document.getElementById('detailTargetPct').textContent = d.targetPct + '%';
         document.getElementById('detailOpsForTarget').textContent = d.opsForTarget;
         
@@ -516,17 +516,17 @@ const Calculator = {
     
     async shareResults() {
         const d = this.currentData;
-        const shareText = `Calculator Calculadora de Riesgo - Latin Labs Traders\n\n` +
-                         `Challenge: ${d.challengeName}\n` +
-                         `Fase: ${d.fase}\n` +
-                         `Instrumento: ${d.instrument}\n` +
-                         `Riesgo: ${this.formatCurrency(d.riesgoDinero)} (${d.riesgoPct}%)\n` +
-                         `Lotes: ${d.lots.toFixed(2)}\n` +
-                         `R:R = ${d.rr.toFixed(2)}\n` +
-                         `TP: ${this.formatCurrency(d.valorTP)}\n` +
-                         `SL: ${this.formatCurrency(d.valorSL)}\n` +
-                         `Ops antes de Blowout: ${d.opsBeforeBlowout.toFixed(1)}\n\n` +
-                         `Link ${window.location.origin}/calculator`;
+    const shareText = `${LanguageManager.t('calculator_title')} - Latin Labs Traders\n\n` +
+    `${LanguageManager.t('Challenge')}: ${d.challengeName}\n` +
+    `${LanguageManager.t('Fase')}: ${d.fase}\n` +
+    `${LanguageManager.t('Instrumento')}: ${d.instrument}\n` +
+    `${LanguageManager.t('Riesgo')}: ${this.formatCurrency(d.riesgoDinero)} (${d.riesgoPct}%)\n` +
+    `${LanguageManager.t('Lots')}: ${d.lots.toFixed(2)}\n` +
+    `R:R = ${d.rr.toFixed(2)}\n` +
+    `TP: ${this.formatCurrency(d.valorTP)}\n` +
+    `SL: ${this.formatCurrency(d.valorSL)} (${LanguageManager.t('Stop Loss')})\n` +
+    `${LanguageManager.t('Ops antes de Blowout')}: ${d.opsBeforeBlowout.toFixed(1)}\n\n` +
+    `${LanguageManager.t('Link')} ${window.location.origin}/calculator`;
         
         if (navigator.share) {
             try {

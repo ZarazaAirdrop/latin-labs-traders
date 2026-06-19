@@ -68,6 +68,15 @@ const LanguageManager = {
                 element.textContent = translations[key];
             }
         });
+    },
+
+    /**
+     * Traduce una clave usando el idioma actual.
+     * @param {string} key - Clave de traducción.
+     * @returns {string} - Texto traducido o la clave si no existe.
+     */
+    t(key) {
+        return window.translations[this.currentLang]?.[key] || key;
     }
 };
 
