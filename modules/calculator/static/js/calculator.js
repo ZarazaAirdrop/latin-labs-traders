@@ -451,7 +451,7 @@ const Calculator = {
         document.getElementById('detailPipsTP').textContent = d.pipsTP.toFixed(2);
         document.getElementById('detailValueSL').textContent = this.formatCurrency(d.valorSL);
         document.getElementById('detailValueTP').textContent = this.formatCurrency(d.valorTP);
-        document.getElementById('detailPhase').textContent = LanguageManager.t('Fase') + ' ' + d.fase;
+        document.getElementById('detailPhase').textContent = d.fase === 1 ? LanguageManager.t('Fase') + ' 1' : LanguageManager.t('Fase') + ' 2';
         document.getElementById('detailTargetPct').textContent = d.targetPct + '%';
         document.getElementById('detailOpsForTarget').textContent = d.opsForTarget;
         
