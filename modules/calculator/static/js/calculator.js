@@ -224,7 +224,7 @@ const Calculator = {
             targetUSD + Math.abs(profitActual);
         
         // Calculate payout estimate (80% split)
-        const payoutEstimate = cuenta * 0.9;  // Alineado con DNA Funded (90% profit split)
+        const payoutEstimate = cuenta * 0.9;  // DNA Funded alineado (90%)  // Alineado con DNA Funded (90% profit split)
         
         // Determine trader profile
         let profile = 'Conservador';
@@ -459,7 +459,7 @@ const Calculator = {
         opsBlowoutEl.textContent = d.opsBeforeBlowout.toFixed(1);
         opsBlowoutEl.className = 'detail-value ' + (d.opsBeforeBlowout <= 3 ? 'red' : 'green');
         
-        document.getElementById('detailPayout').textContent = this.formatCurrency(d.payoutEstimate);
+        document.getElementById('detailPayout').textContent = this.formatCurrency(d.payoutEstimate) + ' (' + LanguageManager.t('payout_percentage') + ')';
         document.getElementById('detailMaxDailyLoss').textContent = this.formatCurrency(d.dailyLossUSD);
     },
     

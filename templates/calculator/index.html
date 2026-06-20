@@ -9,10 +9,10 @@
 {% block content %}
 <div class="calculator-page">
     <div class="container">
-        <div class="calculator-header">
-            <h1>Calculadora de Riesgo v1.0</h1>
-            <p>Gestiona tu riesgo profesionalmente con datos reales de DNA Funded</p>
-        </div>
+    <div class="calculator-header">
+        <h1 data-i18n="calculator_title">Calculadora de Riesgo v1.0</h1>
+        <p data-i18n="calculator_subtitle">Gestiona tu riesgo profesionalmente con datos reales de DNA Funded</p>
+    </div>
         
         <div class="calculator-grid">
             <!-- Input Form -->
@@ -82,28 +82,26 @@
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="entryPrice">Precio Entrada</label>
-                            <input type="number" id="entryPrice" name="entryPrice" 
-                                   step="0.01" placeholder="Ej: 1.0850" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="stopPrice">Stop Loss</label>
-                            <input type="number" id="stopPrice" name="stopPrice" 
-                                   step="0.01" placeholder="Ej: 1.0830" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="takePrice">Take Profit</label>
-                        <input type="number" id="takePrice" name="takePrice" 
-                               step="0.01" placeholder="Ej: 1.0890" required>
+        <label for="entryPrice" data-i18n="entry_price">Precio Entrada</label>
+        <input type="number" id="entryPrice" name="entryPrice"
+            step="0.0001" placeholder="Ex: 1.08500" required>
+        </div>
+
+        <div class="form-group">
+            <label for="stopPrice" data-i18n="stop_loss">Stop Loss</label>
+            <input type="number" id="stopPrice" name="stopPrice"
+                step="0.0001" placeholder="Ex: 1.08300" required>
+        </div>
+        <div class="form-group">
+            <label for="takePrice" data-i18n="take_profit">Take Profit</label>
+            <input type="number" id="takePrice" name="takePrice"
+                step="0.0001" placeholder="Ex: 1.08900" required>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Calcular Operación
-                        </button>
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="calculate_button">
+            Calcular Operación
+        </button>
                     </div>
                 </form>
             </div>
@@ -183,20 +181,20 @@
                 <div class="overlay-kpi">
                     <div class="kpi-icon">📈</div>
                     <div class="kpi-value" id="overlayTPGain">$0.00</div>
-                    <div class="kpi-label">Ganancia TP</div>
-                </div>
-                
-                <div class="overlay-kpi">
-                    <div class="kpi-icon">⚖️</div>
-                    <div class="kpi-value" id="overlayRR">0.00</div>
-                    <div class="kpi-label">Ratio R:R</div>
-                </div>
-                
-                <div class="overlay-kpi">
-                    <div class="kpi-icon">📊</div>
-                    <div class="kpi-value" id="overlayLots">0.00</div>
-                    <div class="kpi-label">Lotes</div>
-                </div>
+        <div class="kpi-label" data-i18n="profit_tp">Ganancia TP</div>
+        </div>
+
+        <div class="overlay-kpi">
+            <div class="kpi-icon">⚖️</div>
+            <div class="kpi-value" id="overlayRR">0.00</div>
+            <div class="kpi-label" data-i18n="risk_reward">Ratio R:R</div>
+        </div>
+
+        <div class="overlay-kpi">
+            <div class="kpi-icon">📊</div>
+            <div class="kpi-value" id="overlayLots">0.00</div>
+            <div class="kpi-label" data-i18n="lots">Lotes</div>
+        </div>
             </div>
             
             <!-- Three Columns Details -->
@@ -249,19 +247,19 @@
                 
                 <!-- Column 3: Limits -->
                 <div class="detail-card">
-                    <h3>Límites</h3>
-                    <div class="detail-row">
-                        <span class="detail-label">Daily Loss Restante</span>
-                        <span class="detail-value blue" id="detailDailyLoss">$0.00</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Max Drawdown</span>
-                        <span class="detail-value red" id="detailMaxDD">$0.00</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Tipo de Challenge</span>
-                        <span class="detail-value" id="detailChallengeType">--</span>
-                    </div>
+        <h3 data-i18n="limits_title">Límites</h3>
+        <div class="detail-row">
+            <span class="detail-label" data-i18n="daily_loss_remaining">Daily Loss Restante</span>
+            <span class="detail-value blue" id="detailDailyLoss">$0.00</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label" data-i18n="max_drawdown">Max Drawdown</span>
+            <span class="detail-value red" id="detailMaxDD">$0.00</span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label" data-i18n="challenge_type">Tipo de Challenge</span>
+            <span class="detail-value" id="detailChallengeType">--</span>
+        </div>
                 </div>
             </div>
             
