@@ -253,7 +253,7 @@ const Calculator = {
         }
         
         // Determine warning message
-        let warningMessage = 'Operación configurada correctamente';
+        let warningMessage = LanguageManager.t('operation_ok');
         let warningType = 'success';
         if (rr < 1) {
             warningMessage = 'Riesgo elevado: El Risk/Reward es menor a 1';
@@ -368,8 +368,7 @@ const Calculator = {
         const d = this.currentData;
         
         // KPI Grid
-        document.getElementById('overlayRiskAmount').textContent = this.formatCurrency(d.riesgoDinero);
-        document.getElementById('overlayTPGain').textContent = this.formatCurrency(d.valorTP);
+// Already using i18n via data-i18n in HTML template
         
         const rrEl = document.getElementById('overlayRR');
         rrEl.textContent = d.rr.toFixed(2);
@@ -378,7 +377,7 @@ const Calculator = {
         document.getElementById('overlayLots').textContent = d.lots.toFixed(2);
         
 // Column 1: Profile
-        document.getElementById('profileBadge').textContent = d.profile;
+        document.getElementById('profileBadge').textContent = LanguageManager.t('trader_profile') + ': ' + d.profile;
         document.getElementById('profileBadge').className = 'profile-badge ' + 
             d.profile.toLowerCase().replace(' ', '-');
         
@@ -417,28 +416,28 @@ const Calculator = {
             progressTextEl.textContent = ddUsedPct.toFixed(1) + '% ' + LanguageManager.t('del drawdown usado');
         }
         
-        document.getElementById('detailPnL').textContent = this.formatCurrency(d.profitActual);
-        document.getElementById('detailPnL').className = 'detail-value ' + (d.profitActual < 0 ? 'red' : 'green');
-        document.getElementById('detailTarget').textContent = this.formatCurrency(d.targetUSD);
-        
-        // Calculate missing amount correctly
-        const missingEl = document.getElementById('detailMissing');
-        if (d.profitActual >= 0) {
-            // Positive: target - current profit
-            const missing = Math.max(0, d.targetUSD - d.profitActual);
-            missingEl.textContent = this.formatCurrency(missing);
-            missingEl.className = 'detail-value green';
-        } else {
-            // Negative: target + absolute loss
-            const missing = d.targetUSD + Math.abs(d.profitActual);
-            missingEl.textContent = this.formatCurrency(missing);
-            missingEl.className = 'detail-value red';
+document.getElementById('detailPnL').textContent = LanguageManager.t('current_pnl') + ': ' + this.formatCurrency(d.profitActual);
+document.getElementById('detailPnL').className = 'detail-value ' + (d.profitActual < 0 ? 'red' : 'green');
+document.getElementById('detailTarget').textContent = LanguageManager.t('target_to_reach') + ': ' + this.formatCurrency(d.targetUSD);
+
+// Calculate missing amount correctly
+const missingEl = document.getElementById('detailMissing');
+if (d.profitActual >= 0) {
+    // Positive: target - current profit
+    const missing = Math.max(0, d.targetUSD - d.profitActual);
+    missingEl.textContent = LanguageManager.t('missing_amount') + ': ' + this.formatCurrency(missing);
+    missingEl.className = 'detail-value green';
+} else {
+    // Negative: target + absolute loss
+    const missing = d.targetUSD + Math.abs(d.profitActual);
+    missingEl.textContent = LanguageManager.t('missing_amount') + ': ' + this.formatCurrency(missing);
+    missingEl.className = 'detail-value red';
         }
         
         // Column 3: Limits
         document.getElementById('detailDailyLoss').textContent = this.formatCurrency(d.dailyLossRemaining);
         document.getElementById('detailMaxDD').textContent = this.formatCurrency(d.maxLossUSD) + ' (' + d.maxLossPct + '%)';
-        document.getElementById('detailChallengeType').textContent = d.challengeName;
+        document.getElementById('detailChallengeType').textContent = LanguageManager.t('challenge_type') + ' ' + d.challengeName + ' ' + LanguageManager.t('phase') + ' ' + d.fase;
         
         // Warning banner
         const banner = document.getElementById('warningBanner');
