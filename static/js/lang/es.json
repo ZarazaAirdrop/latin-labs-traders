@@ -220,5 +220,13 @@
     "calculator_link": "Calculadora de Riesgo",
     "news_link": "Noticias Financieras",
     "calendar_link": "Calendario Económico",
-    "social_link": "Social Trading"
+    "social_link": "Social Trading",
+    "kpi_instruments": "Instrumentos",
+    "kpi_languages": "Idiomas",
+    "kpi_news": "Noticias",
+    "kpi_calendar": "Calendario",
+    "news_cta": "Noticias Financieras",
+    "powered_by": "Powered by Latin Labs AI",
+    "all_systems": "All Systems Operational",
+    "calculator_cta": "Calculadora de Riesgo"
 }
