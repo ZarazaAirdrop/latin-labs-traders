@@ -3,6 +3,13 @@
  * Full implementation with all calculations from original v1.0
  */
 
+// Global i18n helper (reads window.translations[currentLang])
+function i18n(key, fallback) {
+    const lang = document.documentElement.lang || 'es';
+    const dict = (window.translations && window.translations[lang]) || {};
+    return dict[key] || fallback || key;
+}
+
 const Calculator = {
     form: null,
     overlay: null,
@@ -106,12 +113,12 @@ const Calculator = {
         
         // Validations
         if (isNaN(entryPrice) || isNaN(stopPrice) || isNaN(takePrice)) {
-            this.showToast('Por favor, ingresa precios válidos');
+            this.showToast(i18n('calc_valid_prices', 'Por favor, ingresa precios válidos'));
             return;
         }
         
         if (stopPrice === entryPrice || takePrice === entryPrice) {
-            this.showToast('Stop Loss y Take Profit deben ser diferentes al precio de entrada');
+            this.showToast(i18n('calc_sl_tp_diff', 'Stop Loss y Take Profit deben ser diferentes al precio de entrada'));
             return;
         }
         
@@ -172,21 +179,21 @@ const Calculator = {
         const payoutEstimate = cuenta * 0.9;
         
         // Determine trader profile
-        let profile = 'Conservador';
+        let profile = i18n('profile_conservative', 'Conservador');
         if (rr >= 2 && riesgoPct <= 1) {
-            profile = 'Conservador';
+            profile = i18n('profile_conservative', 'Conservador');
         } else if (rr >= 1.5 && riesgoPct <= 2) {
-            profile = 'Moderado';
+            profile = i18n('profile_moderate', 'Moderado');
         } else {
-            profile = 'Agresivo';
+            profile = i18n('profile_aggressive', 'Agresivo');
         }
         
         // Determine blowout risk
-        let blowoutRisk = 'Baja';
+        let blowoutRisk = i18n('blowout_low', 'Baja');
         if (opsBeforeBlowout <= 3) {
-            blowoutRisk = 'Alta';
+            blowoutRisk = i18n('blowout_high', 'Alta');
         } else if (opsBeforeBlowout <= 7) {
-            blowoutRisk = 'Moderada';
+            blowoutRisk = i18n('blowout_medium', 'Moderada');
         }
         
         // Determine balance status
@@ -198,16 +205,16 @@ const Calculator = {
         }
         
         // Determine warning message
-        let warningMessage = 'Operación configurada correctamente';
+        let warningMessage = i18n('op_ok', 'Operación configurada correctamente');
         let warningType = 'success';
         if (rr < 1) {
-            warningMessage = 'Riesgo elevado: El Risk/Reward es menor a 1';
+            warningMessage = i18n('warn_rr_low', 'Riesgo elevado: El Risk/Reward es menor a 1');
             warningType = 'warning';
-        } else if (blowoutRisk === 'Alta') {
-            warningMessage = 'Riesgo elevado: Pocas operaciones antes de blowout';
+        } else if (blowoutRisk === i18n('blowout_high', 'Alta')) {
+            warningMessage = i18n('warn_blowout', 'Riesgo elevado: Pocas operaciones antes de blowout');
             warningType = 'warning';
         } else if (riesgoPct > 2) {
-            warningMessage = 'Considera reducir el riesgo por operación';
+            warningMessage = i18n('warn_reduce_risk', 'Considera reducir el riesgo por operación');
             warningType = 'warning';
         }
         
@@ -319,7 +326,7 @@ const Calculator = {
         document.getElementById('detailDrawdown').className = 'detail-value ' + d.balanceStatus;
         document.getElementById('detailBlowoutRisk').textContent = d.blowoutRisk;
         document.getElementById('detailBlowoutRisk').className = 
-            'detail-value ' + (d.blowoutRisk === 'Alta' ? 'red' : d.blowoutRisk === 'Moderada' ? 'yellow' : 'green');
+            'detail-value ' + (d.blowoutRisk === i18n('blowout_high', 'Alta') ? 'red' : d.blowoutRisk === i18n('blowout_medium', 'Moderada') ? 'yellow' : 'green');
         
         // Column 2: Challenge Progress
         const progressPct = d.targetUSD > 0 ? Math.min((d.profitActual / d.targetUSD) * 100, 100) : 0;
@@ -423,22 +430,22 @@ const Calculator = {
     
     async shareResults() {
         const d = this.currentData;
-        const shareText = `Calculator Calculadora de Riesgo - Latin Labs Traders\n\n` +
-                         `Challenge: ${d.challengeName}\n` +
-                         `Fase: ${d.fase}\n` +
-                         `Instrumento: ${d.instrument}\n` +
-                         `Riesgo: ${this.formatCurrency(d.riesgoDinero)} (${d.riesgoPct}%)\n` +
-                         `Lotes: ${d.lots.toFixed(2)}\n` +
-                         `R:R = ${d.rr.toFixed(2)}\n` +
-                         `TP: ${this.formatCurrency(d.valorTP)}\n` +
-                         `SL: ${this.formatCurrency(d.valorSL)}\n` +
-                         `Ops antes de Blowout: ${d.opsBeforeBlowout.toFixed(1)}\n\n` +
-                         `Link ${window.location.origin}/calculator`;
+        const shareText = `${i18n('share_heading', 'Risk Calculator')} - Latin Labs Traders\n\n` +
+                         `${i18n('challenge_label', 'Challenge')}: ${d.challengeName}\n` +
+                         `${i18n('phase', 'Fase')}: ${d.fase}\n` +
+                         `${i18n('Instrumento', 'Instrumento')}: ${d.instrument}\n` +
+                         `${i18n('Riesgo', 'Riesgo')}: ${this.formatCurrency(d.riesgoDinero)} (${d.riesgoPct}%)\n` +
+                         `${i18n('Lots', 'Lotes')}: ${d.lots.toFixed(2)}\n` +
+                         `${i18n('risk_reward', 'R:R')} = ${d.rr.toFixed(2)}\n` +
+                         `${i18n('profit_tp', 'TP')}: ${this.formatCurrency(d.valorTP)}\n` +
+                         `${i18n('sl_value', 'SL')}: ${this.formatCurrency(d.valorSL)}\n` +
+                         `${i18n('ops_before_blowout', 'Ops antes de Blowout')}: ${d.opsBeforeBlowout.toFixed(1)}\n\n` +
+                         `${i18n('Link', 'Link')} ${window.location.origin}/calculator`;
         
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: 'Resultados de Operación',
+                    title: i18n('share_results_title', 'Resultados de Operación'),
                     text: shareText,
                     url: window.location.href
                 });
@@ -450,9 +457,9 @@ const Calculator = {
         } else {
             try {
                 await navigator.clipboard.writeText(shareText);
-                this.showToast('Resultados copiados al portapapeles');
+                this.showToast(i18n('toast_copied', 'Resultados copiados al portapapeles'));
             } catch (err) {
-                alert('No se pudo copiar al portapapeles');
+                alert(i18n('toast_copy_fail', 'No se pudo copiar al portapapeles'));
             }
         }
     },

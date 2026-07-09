@@ -3,6 +3,13 @@
  * Full implementation with all calculations from original v1.0
  */
 
+// Global i18n helper (reads window.translations[currentLang])
+function i18n(key, fallback) {
+    const lang = document.documentElement.lang || 'es';
+    const dict = (window.translations && window.translations[lang]) || {};
+    return dict[key] || fallback || key;
+}
+
 const Calculator = {
     form: null,
     overlay: null,
@@ -160,12 +167,12 @@ const Calculator = {
         
         // Validations
         if (isNaN(entryPrice) || isNaN(stopPrice) || isNaN(takePrice)) {
-            this.showToast('Por favor, ingresa precios válidos');
+            this.showToast(LanguageManager.t('calc_valid_prices'));
             return;
         }
         
         if (stopPrice === entryPrice || takePrice === entryPrice) {
-            this.showToast('Stop Loss y Take Profit deben ser diferentes al precio de entrada');
+            this.showToast(LanguageManager.t('calc_sl_tp_diff'));
             return;
         }
         
@@ -227,21 +234,20 @@ const Calculator = {
         const payoutEstimate = cuenta * 0.9;
         
         // Determine trader profile
-        let profile = 'Conservador';
+        let profile = LanguageManager.t('profile_conservative');
         if (rr >= 2 && riesgoPct <= 1) {
-            profile = 'Conservador';
+            profile = LanguageManager.t('profile_conservative');
         } else if (rr >= 1.5 && riesgoPct <= 2) {
-            profile = 'Moderado';
+            profile = LanguageManager.t('profile_moderate');
         } else {
-            profile = 'Agresivo';
+            profile = LanguageManager.t('profile_aggressive');
         }
         
-        // Determine blowout risk
-        let blowoutRisk = 'Baja';
+        let blowoutRisk = LanguageManager.t('blowout_low');
         if (opsBeforeBlowout <= 3) {
-            blowoutRisk = 'Alta';
+            blowoutRisk = LanguageManager.t('blowout_high');
         } else if (opsBeforeBlowout <= 7) {
-            blowoutRisk = 'Moderada';
+            blowoutRisk = LanguageManager.t('blowout_medium');
         }
         
         // Determine balance status
@@ -256,13 +262,13 @@ const Calculator = {
         let warningMessage = LanguageManager.t('operation_ok');
         let warningType = 'success';
         if (rr < 1) {
-            warningMessage = 'Riesgo elevado: El Risk/Reward es menor a 1';
+            warningMessage = LanguageManager.t('warn_rr_low');
             warningType = 'warning';
-        } else if (blowoutRisk === 'Alta') {
-            warningMessage = 'Riesgo elevado: Pocas operaciones antes de blowout';
+        } else if (blowoutRisk === LanguageManager.t('blowout_high')) {
+            warningMessage = LanguageManager.t('warn_blowout');
             warningType = 'warning';
         } else if (riesgoPct > 2) {
-            warningMessage = 'Considera reducir el riesgo por operación';
+            warningMessage = LanguageManager.t('warn_reduce_risk');
             warningType = 'warning';
         }
         
@@ -396,7 +402,7 @@ const Calculator = {
         
         document.getElementById('detailBlowoutRisk').textContent = d.blowoutRisk;
         document.getElementById('detailBlowoutRisk').className = 
-            'detail-value ' + (d.blowoutRisk === 'Alta' ? 'red' : d.blowoutRisk === 'Moderada' ? 'yellow' : 'green');
+            'detail-value ' + (d.blowoutRisk === LanguageManager.t('blowout_high') ? 'red' : d.blowoutRisk === LanguageManager.t('blowout_medium') ? 'yellow' : 'green');
         
 // Column 2: Challenge Progress
         const progressEl = document.getElementById('progressBar');
@@ -530,7 +536,7 @@ if (d.profitActual >= 0) {
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: 'Resultados de Operación',
+                    title: LanguageManager.t('share_results_title'),
                     text: shareText,
                     url: window.location.href
                 });
@@ -542,9 +548,9 @@ if (d.profitActual >= 0) {
         } else {
             try {
                 await navigator.clipboard.writeText(shareText);
-                this.showToast('Resultados copiados al portapapeles');
+                this.showToast(LanguageManager.t('toast_copied'));
             } catch (err) {
-                alert('No se pudo copiar al portapapeles');
+                alert(LanguageManager.t('toast_copy_fail'));
             }
         }
     },
