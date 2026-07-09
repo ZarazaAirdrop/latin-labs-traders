@@ -1,0 +1,349 @@
+/* ============================================================
+   Latin Labs Traders — HD TECH Redesign (Nivel 2)
+   Override aditivo: se carga DESPUÉS de style.css
+   Paleta: Navy profundo + Cian/Teal neón + Oro
+   ============================================================ */
+
+:root {
+    /* Paleta tech — navy + cian/teal + oro */
+    --bg-primary: #060912;
+    --bg-secondary: #0a0e1c;
+    --bg-tertiary: #111726;
+    --bg-card: rgba(17, 23, 38, 0.72);
+
+    --text-primary: #f4f7ff;
+    --text-secondary: #9aa6c4;
+    --text-tertiary: #5a648a;
+
+    /* Acentos: oro (brand) + cian/teal (tech) */
+    --accent-primary: #dda627;
+    --accent-secondary: #c49520;
+    --accent-tertiary: #f5d36b;
+
+    --tech-cyan: #22d3ee;
+    --tech-teal: #2dd4bf;
+    --tech-blue: #3b82f6;
+    --tech-purple: #8b5cf6;
+
+    --accent-gradient: linear-gradient(135deg, #dda627 0%, #f5d36b 100%);
+    --tech-gradient: linear-gradient(135deg, #22d3ee 0%, #2dd4bf 60%, #3b82f6 100%);
+    --dual-gradient: linear-gradient(135deg, #dda627 0%, #22d3ee 100%);
+    --accent-glow: 0 0 30px rgba(221, 166, 39, 0.35);
+    --tech-glow: 0 0 30px rgba(34, 211, 238, 0.35);
+
+    --success: #22c55e;
+    --success-glow: 0 0 14px rgba(34, 197, 94, 0.4);
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --danger-glow: 0 0 14px rgba(239, 68, 68, 0.4);
+
+    --border-color: rgba(255, 255, 255, 0.10);
+    --glass-bg: rgba(255, 255, 255, 0.045);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    /* Sombras multicapa (profundidad real) */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 50px rgba(34, 211, 238, 0.18), 0 0 20px rgba(221, 166, 39, 0.12);
+
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Orbitron', sans-serif;
+}
+
+/* Nítidez tipográfica global */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: var(--bg-primary);
+}
+
+/* Fondo ambiental más denso y tech */
+body::before {
+    background:
+        radial-gradient(ellipse 70% 50% at 15% 0%, rgba(34, 211, 238, 0.10) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 85% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 90%, rgba(221, 166, 39, 0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 75% 80%, rgba(45, 212, 191, 0.05) 0%, transparent 50%);
+    animation: ambient-shift 25s ease-in-out infinite;
+}
+
+/* ============================================================
+   HERO — canvas animado de fondo
+   ============================================================ */
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+.hero-grid {
+    background-image:
+        linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.35;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%);
+}
+
+.hero-gradient {
+    background: radial-gradient(ellipse at 50% 10%, rgba(34, 211, 238, 0.12) 0%, transparent 65%),
+                radial-gradient(ellipse at 50% 90%, rgba(221, 166, 39, 0.10) 0%, transparent 60%);
+}
+
+.hero-title-line {
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 40px rgba(34, 211, 238, 0.15);
+}
+
+.hero-title-line.highlight {
+    background: var(--dual-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-title-line.highlight::after {
+    background: var(--tech-gradient);
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+    height: 3px;
+}
+
+/* ============================================================
+   KPI CARDS — borde gradiente animado + glow
+   ============================================================ */
+.kpi-card {
+    background: linear-gradient(160deg, rgba(17, 23, 38, 0.9), rgba(10, 14, 28, 0.7));
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background-clip: padding-box;
+    position: relative;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 14px;
+    padding: 1px;
+    background: var(--tech-gradient);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    transition: opacity var(--transition-normal);
+}
+
+.kpi-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg), var(--tech-glow);
+}
+
+.kpi-card:hover::before {
+    opacity: 1;
+    background: var(--dual-gradient);
+    animation: border-rotate 3s linear infinite;
+}
+
+.kpi-icon {
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
+}
+
+.kpi-value {
+    background: var(--tech-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   FEATURE CARDS — borde gradiente + tilt 3D
+   ============================================================ */
+.feature-card {
+    background: linear-gradient(160deg, rgba(17, 23, 38, 0.92), rgba(10, 14, 28, 0.75));
+    border: 1px solid transparent;
+    border-radius: 18px;
+    background-clip: padding-box;
+    box-shadow: var(--shadow-md);
+    transform-style: preserve-3d;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 18px;
+    padding: 1.5px;
+    background: var(--tech-gradient);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.4;
+    transition: opacity var(--transition-normal);
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(34, 211, 238, 0.12) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    pointer-events: none;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px) perspective(1000px) rotateX(2deg);
+    box-shadow: var(--shadow-lg), var(--tech-glow);
+    border-color: transparent;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+    background: var(--dual-gradient);
+    animation: border-rotate 4s linear infinite;
+}
+
+.feature-card:hover::after {
+    opacity: 1;
+}
+
+.feature-icon {
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(221, 166, 39, 0.08));
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    box-shadow: inset 0 0 20px rgba(34, 211, 238, 0.08);
+}
+
+.feature-card h3 {
+    background: linear-gradient(135deg, #f4f7ff 0%, #9aa6c4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================================
+   BUTTONS — glow neón
+   ============================================================ */
+.btn-primary {
+    background: var(--accent-gradient);
+    box-shadow: 0 4px 20px rgba(221, 166, 39, 0.4), 0 0 0 1px rgba(245, 211, 107, 0.3) inset;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 8px 40px rgba(221, 166, 39, 0.6), 0 0 0 1px rgba(245, 211, 107, 0.5) inset;
+}
+
+.btn-secondary {
+    background: rgba(17, 23, 38, 0.6);
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+    border-color: var(--tech-cyan);
+    box-shadow: 0 4px 24px rgba(34, 211, 238, 0.3);
+    background: rgba(34, 211, 238, 0.06);
+}
+
+/* ============================================================
+   NAVBAR — más nítido y tech
+   ============================================================ */
+.navbar {
+    background: rgba(6, 9, 18, 0.82);
+    border-bottom: 1px solid rgba(34, 211, 238, 0.12);
+}
+
+.navbar.scrolled {
+    background: rgba(6, 9, 18, 0.95);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(34, 211, 238, 0.15);
+}
+
+.brand-text {
+    background: var(--dual-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.01em;
+}
+
+.nav-link.active {
+    color: var(--text-primary);
+    background: rgba(34, 211, 238, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.2);
+}
+
+.lang-btn.active {
+    background: var(--tech-gradient);
+    border-color: transparent;
+    color: #04121a;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.4);
+}
+
+/* ============================================================
+   TECH PROGRESS BAR — glow neón
+   ============================================================ */
+.tech-progress-fill {
+    background: var(--tech-gradient);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.6);
+}
+
+.tech-status {
+    color: var(--tech-cyan);
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+    font-weight: 600;
+}
+
+/* ============================================================
+   MANIFESTO CARDS
+   ============================================================ */
+.manifesto-card {
+    background: linear-gradient(160deg, rgba(17, 23, 38, 0.8), rgba(10, 14, 28, 0.6));
+    border: 1px solid rgba(34, 211, 238, 0.12);
+    border-radius: 14px;
+    box-shadow: var(--shadow-md);
+}
+
+.manifesto-card:hover {
+    border-color: var(--tech-cyan);
+    box-shadow: var(--shadow-lg), var(--tech-glow);
+}
+
+.manifesto-card h3 {
+    background: var(--tech-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+@keyframes border-rotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar tech */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--tech-cyan), var(--tech-blue));
+    border-radius: 4px;
+}
