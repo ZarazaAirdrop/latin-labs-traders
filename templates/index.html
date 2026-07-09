@@ -13,7 +13,11 @@
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
+    <!-- HD Tech Redesign (Nivel 2) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.hd.css') }}">
+    <!-- HOME 2026 Upgrade -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.home.css') }}">
+
     <!-- Google Analytics -->
     {% if GA_ID != 'YOUR_GA_ID' %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_ID }}"></script>
@@ -78,22 +82,30 @@
             <!-- KPI Grid -->
             <div class="hero-kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-icon">📊</div>
-                    <div class="kpi-value">44+</div>
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-5"/></svg>
+                    </div>
+                    <div class="kpi-value" data-count="44">44+</div>
                     <div class="kpi-label" data-i18n="kpi_instruments">Instrumentos</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-icon">🌐</div>
-                    <div class="kpi-value">3</div>
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                    </div>
+                    <div class="kpi-value" data-count="3">3</div>
                     <div class="kpi-label" data-i18n="kpi_languages">Idiomas</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-icon">⚡</div>
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+                    </div>
                     <div class="kpi-value">Real-time</div>
                     <div class="kpi-label" data-i18n="kpi_news">Noticias</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-icon">📅</div>
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+                    </div>
                     <div class="kpi-value">24/7</div>
                     <div class="kpi-label" data-i18n="kpi_calendar">Calendario</div>
                 </div>
@@ -124,67 +136,67 @@
     </section>
     
     <!-- Features Section -->
-    <section class="features">
+    <section class="features reveal">
         <div class="container">
             <h2 class="section-title" data-i18n="section_tools">Herramientas Profesionales</h2>
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🧮</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M8 14h2M8 18h2M14 10h2v8h-2z"/></svg>
+                    </div>
                     <h3 data-i18n="feature_calc_title">Calculadora de Riesgo</h3>
                     <p data-i18n="feature_calc_desc">Aprende a dimensionar tus operaciones: position sizing, drawdown y max loss para 44 instrumentos. Piensa como una prop firm.</p>
                     <a href="{{ url_for('calculator.index') }}" class="feature-link">
                         <span data-i18n="use_now">Usar ahora</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
-                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/></svg>
                     </a>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">📰</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 8h8M8 11h5"/></svg>
+                    </div>
                     <h3 data-i18n="feature_news_title">Noticias Financieras</h3>
                     <p data-i18n="feature_news_desc">Mantente informado para tomar decisiones conscientes. Noticias curadas para educación, no para trading emocional.</p>
                     <a href="{{ url_for('news.index') }}" class="feature-link">
                         <span data-i18n="view_news">Ver noticias</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
-                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/></svg>
                     </a>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">📅</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M9 14l2 2 4-4"/></svg>
+                    </div>
                     <h3 data-i18n="feature_cal_title">Calendario Económico</h3>
                     <p data-i18n="feature_cal_desc">Anticipa la volatilidad con datos económicos reales. Planifica tu trading alrededor de eventos que mueven mercados.</p>
                     <a href="{{ url_for('calendar.index') }}" class="feature-link">
                         <span data-i18n="view_calendar">Ver calendario</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
-                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/></svg>
                     </a>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🐦</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4.5a8.4 8.4 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.3 8.3 0 0 1-2.6 1A4.1 4.1 0 0 0 12 7.5a11.6 11.6 0 0 1-8.4-4.3 4.1 4.1 0 0 0 1.3 5.5A4 4 0 0 1 3 8.2v.5a4.1 4.1 0 0 0 3.3 4 4.1 4.1 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 17.4 11.6 11.6 0 0 0 8.3 19c7.5 0 11.6-6.2 11.6-11.6v-.5a8.3 8.3 0 0 0 2-2.1z"/></svg>
+                    </div>
                     <h3 data-i18n="feature_social_title">Social Trading</h3>
                     <p data-i18n="feature_social_desc">Sigue a traders que enseñan consistencia, no a vendedores de humo. Aprende de los que piensan como prop firms.</p>
                     <a href="{{ url_for('social.index') }}" class="feature-link">
                         <span data-i18n="view_tweets">Ver tweets</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
-                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/></svg>
                     </a>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M12 7V4a2 2 0 0 0-4 0M12 7V4a2 2 0 0 1 4 0M9 14h.01M15 14h.01M9 17h6"/></svg>
+                    </div>
                     <h3 data-i18n="feature_ai_title">AI Trading Assistant</h3>
-                    <p data-i18n="feature_ai_desc">Asistente educativo con Mistral Large 3: resuelve dudas sobre gestión de riesgo, reglas de prop firms y position sizing.</p>
+                    <p data-i18n="feature_ai_desc">Asistente educativo con Mistral Small 24B: resuelve dudas sobre gestión de riesgo, reglas de prop firms y position sizing.</p>
                     <a href="{{ url_for('ai.index') }}" class="feature-link">
                         <span data-i18n="ask_ai">Preguntar</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/>
-                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M11.75 8a.75.75 0 0 0-.75.75v2.79L5.47 6.28a.75.75 0 0 0-1.06 1.06l6.03 6.03a.75.75 0 0 0 1.06 0l6.03-6.03a.75.75 0 0 0-1.06-1.06l-5.53 5.53V8.75a.75.75 0 0 0-.75-.75z"/></svg>
                     </a>
                 </div>
             </div>
@@ -192,28 +204,36 @@
     </section>
     
     <!-- Manifesto Section -->
-    <section class="manifesto">
+    <section class="manifesto reveal">
         <div class="container">
             <div class="manifesto-content">
                 <h2 class="section-title manifesto-title" data-i18n="manifesto_title">¿Qué es Latin Labs Traders?</h2>
                 <div class="manifesto-grid">
                     <div class="manifesto-card">
-                        <div class="manifesto-icon">🎯</div>
+                        <div class="manifesto-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+                        </div>
                         <h3 data-i18n="manifesto_01_title">Enseñamos gestión de riesgo</h3>
                         <p data-i18n="manifesto_01_text">No señales, no predicciones. Calcula tu posición, entiende tu drawdown, respeta tu max loss. Eso es pensar como una prop firm.</p>
                     </div>
                     <div class="manifesto-card">
-                        <div class="manifesto-icon">📖</div>
+                        <div class="manifesto-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z"/><path d="M3 9h18M7 5v14M17 5v14"/></svg>
+                        </div>
                         <h3 data-i18n="manifesto_02_title">Educación cinematográfica</h3>
                         <p data-i18n="manifesto_02_text">Contamos historias que enseñan disciplina financiera. No gráficos aburridos — narrativa que se queda en tu memoria.</p>
                     </div>
                     <div class="manifesto-card">
-                        <div class="manifesto-icon">🛠️</div>
+                        <div class="manifesto-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2z"/></svg>
+                        </div>
                         <h3 data-i18n="manifesto_03_title">Herramientas reales</h3>
                         <p data-i18n="manifesto_03_text">Calculadora de riesgo con 44 instrumentos, asistente IA para reglas de challenges, calendario económico. Todo lo que necesitas para operar con consistencia.</p>
                     </div>
                     <div class="manifesto-card">
-                        <div class="manifesto-icon">🔥</div>
+                        <div class="manifesto-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s4 4 4 8a4 4 0 0 1-8 0c0-4 4-8 4-8z"/><path d="M12 22a6 6 0 0 0 6-6c0-2-1-4-2-5"/></svg>
+                        </div>
                         <h3 data-i18n="manifesto_04_title">Sin falsas promesas</h3>
                         <p data-i18n="manifesto_04_text">Aquí no hay Lamborghinis, ni estrategias mágicas, ni gurús. Hay disciplina, gestión de riesgo y trabajo consistente.</p>
                     </div>
@@ -236,5 +256,9 @@
     
     <!-- Main JS -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- HD Tech: hero canvas -->
+    <script src="{{ url_for('static', filename='js/hero-canvas.js') }}"></script>
+    <!-- HOME 2026 animations -->
+    <script src="{{ url_for('static', filename='js/home-anim.js') }}"></script>
 </body>
 </html>
