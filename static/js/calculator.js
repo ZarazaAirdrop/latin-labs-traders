@@ -168,8 +168,8 @@ const Calculator = {
         const profitActual = 0; // Assuming starting fresh
         const missingAmount = targetUSD - profitActual;
         
-        // Calculate payout estimate (80% split)
-        const payoutEstimate = cuenta * 0.8;
+        // Calculate payout estimate (90% split - DNA Funded up to 90%)
+        const payoutEstimate = cuenta * 0.9;
         
         // Determine trader profile
         let profile = 'Conservador';

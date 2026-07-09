@@ -167,9 +167,42 @@ body::before {
     letter-spacing: -0.02em;
 }
 
-/* ============================================================
-   FEATURE CARDS — borde gradiente + tilt 3D
-   ============================================================ */
+/* Hero badges tech */
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(34, 211, 238, 0.06);
+    border: 1px solid rgba(34, 211, 238, 0.18);
+    backdrop-filter: blur(6px);
+}
+.badge-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--tech-cyan);
+    box-shadow: 0 0 8px var(--tech-cyan);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+@keyframes badgePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
 .feature-card {
     background: linear-gradient(160deg, rgba(17, 23, 38, 0.92), rgba(10, 14, 28, 0.75));
     border: 1px solid transparent;

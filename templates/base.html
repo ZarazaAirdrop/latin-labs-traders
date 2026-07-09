@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- HD Tech Redesign (Nivel 2) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.hd.css') }}">
+    
+    <!-- Page-specific CSS -->
+    {% block head_extra %}{% endblock %}
 
     <!-- Google Analytics -->
     {% if GA_ID != 'YOUR_GA_ID' %}

@@ -22,7 +22,8 @@ class Config:
     # Social Agent (Nitter)
     NITTER_BASE_URL = "https://nitter.net"
 
-    # NVIDIA NIM API (MiniMax-M3)
-    NVIDIA_API_KEY = os.environ.get('NVIDIA_API_KEY', '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')
-    NVIDIA_MODEL = os.environ.get('NVIDIA_MODEL', 'mistralai/mistral-large-3-675b-instruct-2512')
-    NVIDIA_BASE_URL = os.environ.get('NVIDIA_BASE_URL', 'https://integrate.api.nvidia.com/v1')
+    # AI Assistant — OpenRouter (NVIDIA NIM key venció / 403)
+    # OpenRouter es OpenAI-compatible: mismo formato /chat/completions
+    NVIDIA_API_KEY = os.environ.get('OPENROUTER_API_KEY', '')
+    NVIDIA_MODEL = os.environ.get('OPENROUTER_MODEL', 'tencent/hy3:free')
+    NVIDIA_BASE_URL = os.environ.get('OPENROUTER_BASE_URL', 'https://openrouter.ai/api/v1')

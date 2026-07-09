@@ -1,6 +1,7 @@
 """
-AI Service via NVIDIA NIM API
-Supports mistral-large-3, deepseek-v4, and other OpenAI-compatible models
+AI Service via OpenRouter API (OpenAI-compatible)
+Modelo por defecto: tencent/hy3:free (fallback gratuito)
+Sustituye a NVIDIA NIM cuya key venció (HTTP 403).
 """
 import requests
 import json
@@ -8,7 +9,7 @@ import time
 from threading import Lock
 
 class MiniMaxM3:
-    def __init__(self, api_key, model="mistralai/mistral-large-3-675b-instruct-2512", base_url="https://integrate.api.nvidia.com/v1"):
+    def __init__(self, api_key, model="tencent/hy3:free", base_url="https://openrouter.ai/api/v1"):
         self.api_key = api_key
         self.model = model
         self.base_url = base_url
@@ -53,9 +54,9 @@ class MiniMaxM3:
         except requests.exceptions.HTTPError as e:
             status = e.response.status_code if e.response is not None else 0
             if status == 401:
-                raise PermissionError("API key inválida. Verifica tu NVIDIA_API_KEY.")
+                raise PermissionError("API key inválida. Verifica tu OPENROUTER_API_KEY.")
             elif status == 429:
-                raise Exception("Límite de requests excedido en NVIDIA NIM. Espera 1 minuto e intenta de nuevo.")
+                raise Exception("Límite de requests excedido en OpenRouter. Espera 1 minuto e intenta de nuevo.")
             else:
                 raise Exception(f"Error HTTP {status} en API de IA.")
         except requests.exceptions.ConnectionError:
@@ -291,7 +292,7 @@ LIMITACIONES (debes mencionarlas cuando sea relevante):
 - NO eres un asesor financiero certificado
 - NO das señales de compra/venta
 - NO garantizas resultados
-- Este es un modelo de IA en fase de prueba/evaluación vía NVIDIA NIM
+- Este es un modelo de IA en fase de prueba/evaluación vía OpenRouter (tencent/hy3:free)
 - El usuario debe verificar siempre la información antes de operar
 
 Personalidad: Educador profesional, directo, preciso. Usa storytelling y ejemplos numéricos. Cuando te pidan predicciones, redirige a análisis educativo. Sé conciso pero completo."""
