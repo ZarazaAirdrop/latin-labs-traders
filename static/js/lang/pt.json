@@ -234,5 +234,9 @@
     "calculator_link": "Calculadora de Risco",
     "news_link": "Notícias Financeiras",
     "calendar_link": "Calendário Econômico",
-    "social_link": "Social Trading"
-  }
+    "social_link": "Social Trading",
+    "challenge_label": "Desafio",
+    "account_size": "Tamanho da Conta",
+    "risk_percent": "Risco (%)",
+    "complete_form": "Preencha o formulário e clique em \"Calcular Operação\" para ver o relatório completo"
+}

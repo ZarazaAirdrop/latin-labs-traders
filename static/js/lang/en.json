@@ -218,5 +218,9 @@
     "share": "Share",
     "results_summary": "Results Summary",
     "account_balance": "Current Balance ($)",
-    "phase": "Phase"
-  }
+    "phase": "Phase",
+    "challenge_label": "Challenge",
+    "account_size": "Account Size",
+    "risk_percent": "Risk (%)",
+    "complete_form": "Complete the form and click \"Calculate Operation\" to see the full report"
+}

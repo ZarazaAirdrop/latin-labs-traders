@@ -19,7 +19,7 @@
             <div class="calculator-form">
                 <form id="riskForm">
                     <div class="form-group">
-                        <label for="challenge">Challenge</label>
+                        <label for="challenge" data-i18n="challenge_label">Challenge</label>
                         <select id="challenge" name="challenge" required>
                             {% for challenge in challenges %}
                             <option value="{{ challenge }}">{{ challenge }}</option>
@@ -29,7 +29,7 @@
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="fase">Fase</label>
+                            <label for="fase" data-i18n="phase">Fase</label>
                             <select id="fase" name="fase" required>
                                 <option value="1">Fase 1</option>
                                 <option value="2">Fase 2</option>
@@ -37,7 +37,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="cuenta">Tamaño Cuenta</label>
+                            <label for="cuenta" data-i18n="account_size">Tamaño Cuenta</label>
                             <select id="cuenta" name="cuenta" required>
                                 <option value="5000">$5,000</option>
                                 <option value="10000">$10,000</option>
@@ -50,7 +50,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="instrument">Instrumento</label>
+                        <label for="instrument" data-i18n="Instrumento">Instrumento</label>
                         <select id="instrument" name="instrument" required>
                             {% for group, instruments in instrument_groups.items() %}
                             <optgroup label="{{ group }}">
@@ -74,7 +74,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="riskPercent">Riesgo (%)</label>
+                            <label for="riskPercent" data-i18n="risk_percent">Riesgo (%)</label>
                             <input type="number" id="riskPercent" name="riskPercent" 
                                    value="1" min="0.1" max="5" step="0.1" required>
                         </div>
